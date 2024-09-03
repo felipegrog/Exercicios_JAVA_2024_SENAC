@@ -1,0 +1,49 @@
+<script>
+
+// 5) Escreva um programa para ler as dimensões de uma cozinha retangular (comprimento, largura e altura), calcular e escrever a quantidade de caixas de azulejos para se colocar em todas as suas paredes (considere que não será descontada a área ocupada por portas e janelas). Cada caixa de azulejos possui 1,5 m2. 
+
+// Entrada
+function entrada() {
+    // Ler as dimensões da cozinha
+    let comprimento = parseFloat(prompt("Digite o comprimento da cozinha em metros:"));
+    let largura = parseFloat(prompt("Digite a largura da cozinha em metros:"));
+    let altura = parseFloat(prompt("Digite a altura da cozinha em metros:"));
+
+    return { comprimento, largura, altura };
+}
+
+// Processamento
+function processamento(dimensoes) {
+    // Extrair as dimensões da cozinha
+    let { comprimento, largura, altura } = dimensoes;
+    
+    // Calcular a área total das paredes
+    let areaParede1 = comprimento * altura * 2; // Duas paredes de comprimento x altura
+    let areaParede2 = largura * altura * 2; // Duas paredes de largura x altura
+    let areaTotal = areaParede1 + areaParede2;
+    
+    // Cada caixa cobre 1,5 m²
+    let coberturaPorCaixa = 1.5;
+    
+    // Calcular o número de caixas necessárias (arredondando para cima)
+    let caixasNecessarias = Math.ceil(areaTotal / coberturaPorCaixa);
+    
+    return caixasNecessarias;
+}
+
+// Saída
+function saida(caixasNecessarias) {
+    // Exibir o resultado
+    console.log(`Você precisará de ${caixasNecessarias} caixas de azulejos.`);
+}
+
+// Fluxo principal do programa
+function main() {
+    let dimensoes = entrada();                 // Entrada
+    let caixasNecessarias = processamento(dimensoes); // Processamento
+    saida(caixasNecessarias);                    // Saída
+}
+
+// Executar o programa
+main();
+</script>

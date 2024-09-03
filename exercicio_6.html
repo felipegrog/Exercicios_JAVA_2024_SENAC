@@ -1,0 +1,56 @@
+<script>
+
+    // 6) Um motorista de táxi deseja calcular o rendimento de seu carro na praça. Sabendo-se que o preço do combustível é de R$ 4,87, escreva um programa para ler: a marcação do odômetro (Km) no início do dia, a marcação (Km) no final do dia, o número de litros de combustível gasto e o valor total (R$) recebido dos passageiros. Calcular e escrever: a média do consumo em Km/L e o lucro (líquido) do dia.
+
+    // Entrada
+function entrada() {
+    // Ler os dados de entrada
+    let odometroInicio = parseFloat(prompt("Digite a marcação do odômetro no início do dia (em Km):"));
+    let odometroFim = parseFloat(prompt("Digite a marcação do odômetro no final do dia (em Km):"));
+    let litrosCombustivel = parseFloat(prompt("Digite o número de litros de combustível gasto:"));
+    let valorRecebido = parseFloat(prompt("Digite o valor total recebido dos passageiros (em R$):"));
+
+    return { odometroInicio, odometroFim, litrosCombustivel, valorRecebido };
+}
+
+// Processamento
+function processamento(dados) {
+    // Extrair os dados de entrada
+    let { odometroInicio, odometroFim, litrosCombustivel, valorRecebido } = dados;
+    
+    // Constante do preço do combustível
+    const precoCombustivel = 4.87;
+    
+    // Calcular a distância percorrida
+    let distanciaPercorrida = odometroFim - odometroInicio;
+    
+    // Calcular a média de consumo em Km/L
+    let mediaConsumo = distanciaPercorrida / litrosCombustivel;
+    
+    // Calcular o custo total com combustível
+    let custoCombustivel = litrosCombustivel * precoCombustivel;
+    
+    // Calcular o lucro líquido do dia
+    let lucroLiquido = valorRecebido - custoCombustivel;
+    
+    return { mediaConsumo, lucroLiquido };
+}
+
+// Saída
+function saida(resultados) {
+    // Exibir os resultados
+    console.log(`A média de consumo foi de ${resultados.mediaConsumo.toFixed(2)} Km/L.`);
+    console.log(`O lucro líquido do dia foi de R$ ${resultados.lucroLiquido.toFixed(2)}.`);
+}
+
+// Fluxo principal do programa
+function main() {
+    let dados = entrada();                          // Entrada
+    let resultados = processamento(dados);          // Processamento
+    saida(resultados);                                // Saída
+}
+
+// Executar o programa
+main();
+
+</script>
